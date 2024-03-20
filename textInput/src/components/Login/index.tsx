@@ -1,6 +1,5 @@
 import {
   View,
-  Text,
   TextInput,
   StyleSheet,
   TouchableWithoutFeedback,
@@ -14,6 +13,10 @@ import React from "react";
 export default function Login() {
   const [username, onChangeUsername] = React.useState("");
   const [password, onChangePassword] = React.useState("");
+  const handleLogin = () => {
+    console.log(`username: ${username},\npassword: ${password}`);
+  };
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={styles.container}>
@@ -21,7 +24,7 @@ export default function Login() {
           style={styles.image}
           source={{
             uri: "https://seeklogo.com/images/U/utfpr-universidade-tecnologica-federal-do-parana-logo-6CF2B55F31-seeklogo.com.png",
-          }} // substitua pelo URL da sua imagem
+          }}
         />
         <TextInput
           style={styles.input}
@@ -36,12 +39,7 @@ export default function Login() {
           placeholder="Password"
           secureTextEntry={true}
         />
-        <Button
-          title="Login"
-          onPress={() =>
-            console.log(`username: ${username},\npassword: ${password}`)
-          }
-        />
+        <Button title="Login" onPress={handleLogin} />
       </View>
     </TouchableWithoutFeedback>
   );
